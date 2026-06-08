@@ -145,9 +145,24 @@
   .small { font-size: 10pt; }
   .mt-1 { margin-top: 0.08in; }
   .mb-1 { margin-bottom: 0.08in; }
+
+  /* Scale wrapper to fill A0 Portrait */
+  .poster-scaler {
+    transform-origin: top left;
+    transform: scale(2.14);
+    width: 46.73%;  /* 100% / 2.14 */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  body {
+    position: relative;
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
+<div class="poster-scaler">
 
 <!-- ===== HEADER ===== -->
 <div class="header">
@@ -413,5 +428,6 @@ for char in group:
   <div>📄 ACL 2026 · Camera Ready</div>
 </div>
 
+</div>
 </body>
 </html>
