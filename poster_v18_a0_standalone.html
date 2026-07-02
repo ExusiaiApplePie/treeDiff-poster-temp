@@ -32,9 +32,8 @@
 
   /* ===== HEADER ===== */
   .header {
-    background: #ffffff;
-    border: 1px solid #dee2e6;
-    color: #1a1a2e;
+    background: #1a8a5a;
+    color: #ffffff;
     padding: 0.7in 1.23in;
     border-radius: 0.21in;
     text-align: center;
@@ -48,7 +47,7 @@
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #1a1a2e;
+    color: #ffffff;
     margin-bottom: 0.21in;
   }
   .header .authors {
@@ -56,30 +55,30 @@
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 0.11in;
-    color: #333;
+    color: rgba(255,255,255,0.9);
   }
   .header .affiliations {
     font-size: 22pt;
-    color: #868e96;
+    color: rgba(255,255,255,0.75);
   }
   .conf-badge {
     position: absolute;
     top: 0.2in;
     right: 0.53in;
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 0.12in;
     padding: 0.1in 0.2in;
     font-size: 22pt;
     font-weight: 600;
-    color: #1a8a5a;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
   }
 
   /* ===== TAKE-HOME ===== */
   .takehome {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
     border-left: 6px solid #1a8a5a;
     border-radius: 0.14in;
     padding: 0.3in 0.88in;
@@ -87,11 +86,11 @@
     text-align: left;
     font-size: 33pt;
     font-weight: 500;
-    color: #1a1a2e;
+    color: #1a3a2e;
     line-height: 1.4;
     flex-shrink: 0;
   }
-  .takehome strong { color: #1a8a5a; font-weight: 700; }
+  .takehome strong { color: #14694a; font-weight: 700; }
 
   /* ===== 3 COLUMNS ===== */
   .columns {
@@ -116,28 +115,28 @@
   /* ===== SECTIONS ===== */
   .section {
     background: #ffffff;
-    border: 1px solid #e9ecef;
+    border: 1px solid #dee2e6;
     border-radius: 0.14in;
     padding: 0.35in 0.44in;
     overflow: hidden;
   }
   .section-title {
     font-family: 'Inter', 'DM Sans', sans-serif;
-    font-size: 36pt;
+    font-size: 34pt;
     font-weight: 600;
-    color: #1a1a2e;
-    margin-bottom: 0.18in;
-    padding-bottom: 0.1in;
-    border-bottom: 1px solid #e9ecef;
+    color: #ffffff;
+    margin: -0.35in -0.44in 0.18in -0.44in;
+    padding: 0.2in 0.44in;
+    background: #1a8a5a;
     display: flex;
     align-items: center;
     gap: 0.12in;
     letter-spacing: -0.01em;
   }
   .section-title svg {
-    width: 0.42in;
-    height: 0.42in;
-    stroke: #1a8a5a;
+    width: 0.38in;
+    height: 0.38in;
+    stroke: #ffffff;
     flex-shrink: 0;
   }
   .section p, .section li {
@@ -154,8 +153,8 @@
 
   /* ===== INSIGHT BOX ===== */
   .insight-box {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
     border-left: 4px solid #1a8a5a;
     border-radius: 0.08in;
     padding: 0.18in 0.15in;
@@ -179,14 +178,14 @@
 
   /* ===== HIGHLIGHT BOXES ===== */
   .hl-box {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
     border-radius: 0.08in;
     padding: 0.15in 0.2in;
     font-size: 23pt;
     line-height: 1.45;
     margin-top: 0.15in;
-    color: #444;
+    color: #1a3a2e;
   }
 
   /* ===== FIGURES ===== */
@@ -224,9 +223,9 @@
   }
   .stat-box {
     flex: 1;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    color: #1a1a2e;
+    background: #1a8a5a;
+    border: none;
+    color: #ffffff;
     border-radius: 0.12in;
     padding: 0.18in;
     text-align: center;
@@ -236,11 +235,11 @@
     font-size: 54pt;
     font-weight: 700;
     line-height: 1.1;
-    color: #1a8a5a;
+    color: #ffffff;
   }
   .stat-box .desc {
     font-size: 18pt;
-    color: #868e96;
+    color: rgba(255,255,255,0.85);
     line-height: 1.3;
     margin-top: 0.04in;
   }
@@ -254,12 +253,12 @@
     table-layout: fixed;
   }
   table.rt th {
-    background: #f1f3f5;
-    color: #1a1a2e;
+    background: #1a8a5a;
+    color: #ffffff;
     padding: 0.07in 0.04in;
     font-weight: 600;
     text-align: center;
-    border: 1px solid #dee2e6;
+    border: 1px solid #148a52;
     font-size: 15pt;
     font-family: 'Inter', sans-serif;
   }
@@ -272,9 +271,9 @@
     text-overflow: ellipsis;
   }
   table.rt tr:nth-child(even) { background: #f8f9fa; }
-  table.rt tr.sh td { background: #f1f3f5; font-weight: 600; font-style: italic; }
-  table.rt tr.ours td { background: #e8f5e9; font-weight: 700; }
-  table.rt td.best { color: #1a8a5a; font-size: 16pt; font-weight: 700; }
+  table.rt tr.sh td { background: #e8f5e9; font-weight: 600; font-style: italic; color: #1a3a2e; }
+  table.rt tr.ours td { background: #c8e6c9; font-weight: 700; }
+  table.rt td.best { color: #14694a; font-size: 16pt; font-weight: 800; }
 
   table.tt {
     width: 100%;
@@ -283,12 +282,12 @@
     margin: 0.12in 0;
   }
   table.tt th {
-    background: #f1f3f5;
-    color: #1a1a2e;
+    background: #2c5e4a;
+    color: #ffffff;
     padding: 0.07in 0.06in;
     font-weight: 600;
     text-align: left;
-    border: 1px solid #dee2e6;
+    border: 1px solid #1f4a3a;
     font-family: 'Inter', sans-serif;
   }
   table.tt td {
@@ -319,7 +318,7 @@
     color: #fff;
   }
   .code-block.ours .clabel { background: #1a8a5a; }
-  .code-block.base .clabel { background: #868e96; }
+  .code-block.base .clabel { background: #5a6068; }
   .code-block pre {
     font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
     font-size: 14pt;
@@ -370,7 +369,7 @@
     font-weight: 600;
     color: #fff;
   }
-  .bar-t256 { background: #868e96; }
+  .bar-t256 { background: #a5d8bc; }
   .bar-t512 { background: #1a8a5a; }
 
   /* ===== FOOTER ===== */
@@ -380,16 +379,16 @@
     align-items: center;
     margin-top: 0.35in;
     padding: 0.2in 0.44in;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background: #1a8a5a;
+    border: none;
     border-radius: 0.12in;
     font-size: 20pt;
-    color: #868e96;
+    color: rgba(255,255,255,0.8);
   }
   .footer .conf-info {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: #1a8a5a;
+    color: #ffffff;
   }
   .footer .author-block {
     display: flex;
@@ -398,14 +397,14 @@
   }
   .footer .author-info .name {
     font-weight: 600;
-    color: #1a1a2e;
+    color: #ffffff;
   }
   .footer .qr-block {
     text-align: center;
   }
   .footer .qr-block .qr-label {
     font-size: 16pt;
-    color: #868e96;
+    color: rgba(255,255,255,0.7);
     margin-bottom: 0.04in;
   }
   .footer .qr-block img {
