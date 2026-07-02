@@ -24,6 +24,7 @@
     padding: 0.04in;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   @media print {
@@ -535,7 +536,7 @@
       </div>
     </div>
   
-    <div class="section" style="background: transparent; border: 2px dashed #1a8a5a; border-radius: 0.14in;">
+    <div class="section" style="background: transparent; border: none;">
       <div style="text-align: center; width: 100%;">
           <div style="font-size: 20pt; font-weight: 700; color: #1a5276; margin-bottom: 0.03in;">Zexin Li</div>
           <div style="font-size: 13pt; color: #555; margin-bottom: 0.08in;">📧 zli536@ucr.edu</div>
@@ -603,7 +604,7 @@
     </div>
 
 
-    <div class="section" style="flex: 1; display: flex; flex-direction: column; background: transparent; border: 2px dashed #1a8a5a; border-radius: 0.14in;">
+    <div class="section" style="flex: 1; display: flex; flex-direction: column; background: transparent; border: none;">
       <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Authors</div>
       <div style="display: flex; flex-direction: column; gap: 0.2in; align-items: center; flex: 1; justify-content: center;">
         <div style="text-align: center; width: 100%;">
@@ -798,6 +799,64 @@ for char in group:
 
   // Store results for programmatic access
   window.__layoutCheck = { errors, warnings, passed: errors.length === 0 };
+})();
+</script>
+
+
+
+<script>
+(function() {
+  function createBorder() {
+    const zexin = Array.from(document.querySelectorAll('.section')).find(s => s.innerHTML.includes('zli536@ucr.edu'));
+    const contact = Array.from(document.querySelectorAll('.section')).find(s => s.innerHTML.includes('Contact Authors'));
+    if (!zexin || !contact) return;
+    
+    const r1 = zexin.getBoundingClientRect();
+    const r2 = contact.getBoundingClientRect();
+    const sx = window.scrollX || document.body.scrollLeft;
+    const sy = window.scrollY || document.body.scrollTop;
+    
+    const pad = 14;
+    const left = Math.min(r1.left, r2.left) + sx - pad;
+    const top = Math.min(r1.top, r2.top) + sy - pad;
+    const right = Math.max(r1.right, r2.right) + sx + pad;
+    const bottom = Math.max(r1.bottom, r2.bottom) + sy + pad;
+    
+    // Remove old svg if exists
+    const old = document.getElementById('contact-border-svg');
+    if (old) old.remove();
+    
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.id = 'contact-border-svg';
+    svg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;';
+    svg.setAttribute('viewBox', '0 0 ' + document.body.scrollWidth + ' ' + document.body.scrollHeight);
+    
+    const r = 12;
+    const d = 'M' + (left+r) + ',' + top +
+      ' L' + (right-r) + ',' + top +
+      ' Q' + right + ',' + top + ' ' + right + ',' + (top+r) +
+      ' L' + right + ',' + (bottom-r) +
+      ' Q' + right + ',' + bottom + ' ' + (right-r) + ',' + bottom +
+      ' L' + (left+r) + ',' + bottom +
+      ' Q' + left + ',' + bottom + ' ' + left + ',' + (bottom-r) +
+      ' L' + left + ',' + (top+r) +
+      ' Q' + left + ',' + top + ' ' + (left+r) + ',' + top + ' Z';
+    
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', '#1a8a5a');
+    path.setAttribute('stroke-width', '2.5');
+    path.setAttribute('stroke-dasharray', '10,6');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path);
+    
+    document.body.appendChild(svg);
+  }
+  
+  if (document.readyState === 'complete') createBorder();
+  else window.addEventListener('load', createBorder);
+  window.addEventListener('resize', createBorder);
 })();
 </script>
 
