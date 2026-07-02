@@ -517,6 +517,17 @@
     </div>
 
     <div class="section">
+      <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> Corruption Policy</div>
+      <table class="tt">
+        <tr><th>Input Region</th><th>Strategy</th><th>Rationale</th></tr>
+        <tr><td>Prompt</td><td>Kept intact</td><td>Preserve task conditioning</td></tr>
+        <tr><td>Reasoning</td><td>Random token masking</td><td>No structural dependency</td></tr>
+        <tr class="ours"><td>Code</td><td>AST-weighted masking</td><td>Inject structural noise</td></tr>
+      </table>
+      <p class="small mt-1"><strong>Design principle:</strong> Preserve semantic conditioning while injecting structural noise into code.</p>
+    </div>
+
+    <div class="section">
       <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> AST Node Weighting</div>
       <table class="tt">
         <tr><th>Category</th><th>Examples</th><th>Weight</th><th>Purpose</th></tr>
@@ -591,6 +602,35 @@
       <p class="small mt-1"><strong>Key finding:</strong> Span-level masking corrupts entire subtrees — too coarse. TreeDiff's <strong>token-level</strong> AST masking surgically targets high-influence nodes while preserving context.</p>
     </div>
 
+    <div class="section">
+      <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Why Node-level &gt; Span-level?</div>
+      <div style="display: flex; gap: 0.15in;">
+        <div style="flex: 1; background: #fff5f5; border: 1.5px solid #e8a0a0; border-radius: 8px; padding: 0.1in; text-align: center;">
+          <div style="font-size: 16pt; font-weight: 700; color: #c0392b; margin-bottom: 0.05in;">❌ Span Masking</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12pt; line-height: 1.6; text-align: left; padding: 0 0.05in;">
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">def process(data):</span><br>
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">&nbsp;&nbsp;result = []</span><br>
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">&nbsp;&nbsp;for x in data:</span><br>
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">&nbsp;&nbsp;&nbsp;&nbsp;if x &gt; 0:</span><br>
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.append(x)</span><br>
+            <span style="background: #ffcccc; padding: 1px 3px; border-radius: 3px;">&nbsp;&nbsp;return result</span>
+          </div>
+          <div style="font-size: 11pt; color: #c0392b; margin-top: 0.05in;">Masks whole subtree → loses local context</div>
+        </div>
+        <div style="flex: 1; background: #f0fff0; border: 1.5px solid #7dba7d; border-radius: 8px; padding: 0.1in; text-align: center;">
+          <div style="font-size: 16pt; font-weight: 700; color: #1a8a5a; margin-bottom: 0.05in;">✓ Node Masking</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12pt; line-height: 1.6; text-align: left; padding: 0 0.05in;">
+            def process(data):<br>
+            &nbsp;&nbsp;result = []<br>
+            &nbsp;&nbsp;for x in data:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #c8f7c5; padding: 1px 3px; border-radius: 3px;">if x &gt; 0:</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result.append(x)<br>
+            &nbsp;&nbsp;return result
+          </div>
+          <div style="font-size: 11pt; color: #1a8a5a; margin-top: 0.05in;">Masks key nodes only → preserves context</div>
+        </div>
+      </div>
+    </div>
 
     <div class="section" style="display: flex; flex-direction: column; border: 2px dashed #1a8a5a; border-radius: 0.14in; background: #fafffe;">
       <div class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Authors</div>
